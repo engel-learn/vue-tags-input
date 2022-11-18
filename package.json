@@ -1,5 +1,5 @@
 {
-  "name": "@sipec/vue3-tags-input",
+  "name": "vue3-tags-input",
   "version": "3.0.3",
   "author": "Johannes Munari <johannesm@hotmail.de>",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/sipec/vue-tags-input.git"
   },
-  "main": "dist/vue-tags-input.js",
+  "main": "vue-tags-input/vue-tags-input.vue",
   "scripts": {
     "dev": "npm run docs",
     "docs": "cross-env NODE_ENV=development webpack-dev-server --hot --config ./build/docs.config.js",
@@ -43,7 +43,8 @@
     "vue": "3.x"
   },
   "dependencies": {
-    "vue": "^3.0.0-beta.1"
+    "sass": "^1.56.1",
+    "vue": "3.x"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -70,7 +71,6 @@
     "image-webpack-loader": "^4.6.0",
     "ip": "^1.1.5",
     "lint-staged": "^8.1.0",
-    "node-sass": "^4.8.1",
     "normalize-css": "^2.3.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^1.0.0",

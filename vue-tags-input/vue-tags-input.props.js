@@ -157,7 +157,6 @@ export default {
    */
   placeholder: {
     type: String,
-    default: 'Add Tag',
   },
   /**
    * @description Custom trigger key codes can be registrated. If the user presses one of these,
@@ -346,4 +345,14 @@ export default {
   onBeforeDeletingTag: Function,
   onBeforeEditingTag: Function,
   onBeforeSavingTag: Function,
+
+  tagColor: {
+    type: String,
+    default: "bg-primary"
+  },
+
+  disableInput: {
+    type: Boolean,
+    default: false,
+  }
 };

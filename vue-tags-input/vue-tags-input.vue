@@ -5,11 +5,11 @@
 
 <template>
   <div
-    class="vue-tags-input"
     :class="[{ 'ti-disabled': disabled }, { 'ti-focus': focused }, $attrs.class]"
     :style="$attrs.style"
+    class="max-w-full"
   >
-    <div class="ti-input">
+    <div class="flex flex-wrap border border-gray-200" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
       <ul v-if="tagsCopy" class="ti-tags">
         <li
           v-for="(tag, index) in tagsCopy"
@@ -19,13 +19,14 @@
             { 'ti-editing': tagsEditStatus[index] },
             tag.tiClasses,
             tag.classes,
-            { 'ti-deletion-mark': isMarked(index) }
+            { 'ti-deletion-mark': isMarked(index) },
+            tagColor
           ]"
           tabindex="0"
-          class="ti-tag"
+          class="rounded-md flex py-1.5 px-3 text-white ml-1.5 my-1.5"
           @click="$emit('tag-clicked', { tag, index })"
         >
-          <div class="ti-content">
+          <div class="flex items-center">
             <div
               v-if="$slots['tag-left']"
               class="ti-tag-left"
@@ -99,12 +100,12 @@
               class="ti-icon-undo"
               @click="cancelEdit(index)"
             />
-            <i
+            <span
               v-if="!$slots['tag-actions']"
               v-show="!tagsEditStatus[index]"
-              class="ti-icon-close"
+              class="cursor-pointer ml-1.5"
               @click="performDeleteTag(index)"
-            />
+            >&#10005;</span>
             <slot
               v-if="$slots['tag-actions']"
               name="tag-actions"
@@ -119,9 +120,11 @@
             />
           </div>
         </li>
-        <li class="ti-new-tag-input-wrapper">
+        <li class="ti-new-tag-input-wrapper rounded-md w-32">
           <input
             ref="newTagInput"
+            v-if="disableInput"
+            class="ti-new-tag-input focus:ring-0 border-0 rounded-md w-32"
             v-bind="$attrs"
             :class="[createClasses(newTag, tags, validation, isDuplicate)]"
             :placeholder="placeholder"
@@ -130,7 +133,6 @@
             :disabled="disabled"
             type="text"
             size="1"
-            class="ti-new-tag-input"
             @keydown="performAddTags(
               filteredAutocompleteItems[selectedItem] || newTag, $event
             )"
@@ -149,7 +151,7 @@
     <slot name="between-elements" />
     <div
       v-if="autocompleteOpen"
-      class="ti-autocomplete"
+      class="border border-gray-200 border-t-0 rounded-b-md"
       @mouseout="selectedItem = null"
     >
       <slot name="autocomplete-header" />
@@ -158,12 +160,12 @@
           v-for="(item, index) in filteredAutocompleteItems"
           :key="index"
           :style="item.style"
+          class="ti-item rounded-b-md"
           :class="[
             item.tiClasses,
             item.classes,
-            { 'ti-selected-item': isSelected(index) }
+            isSelected(index) ? 'hover:' + tagColor:'',
           ]"
-          class="ti-item"
           @mouseover="disabled ? false : selectedItem = index"
         >
           <div

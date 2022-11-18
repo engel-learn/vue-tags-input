@@ -1,5 +1,5 @@
 import VueTagsInput from '../vue-tags-input/vue-tags-input.vue';
-import { createClasses, createTag, createTags } from '../vue-tags-input/create-tags';
+import { createClasses, createTag, createTags } from './create-tags';
 import TagInput from '../vue-tags-input/tag-input.vue';
 
 // add autoinstall support if the component is attached to the windows object e.g. if added by CDN
