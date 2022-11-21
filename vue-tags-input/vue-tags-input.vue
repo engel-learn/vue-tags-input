@@ -9,7 +9,7 @@
     :style="$attrs.style"
     class="max-w-full"
   >
-    <div class="flex flex-wrap border border-gray-200" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
+    <div class="flex flex-wrap border border-gray-200 p-1.5" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
       <ul v-if="tagsCopy" class="ti-tags">
         <li
           v-for="(tag, index) in tagsCopy"
@@ -124,7 +124,7 @@
           <input
             ref="newTagInput"
             v-if="disableInput"
-            class="ti-new-tag-input focus:ring-0 border-0 rounded-md w-32"
+            class="ti-new-tag-input focus:ring-0 border-0 w-32"
             v-bind="$attrs"
             :class="[createClasses(newTag, tags, validation, isDuplicate)]"
             :placeholder="placeholder"
@@ -151,7 +151,7 @@
     <slot name="between-elements" />
     <div
       v-if="autocompleteOpen"
-      class="border border-gray-200 border-t-0 rounded-b-md"
+      class="border h-24 overflow-y-scroll border-gray-200 border-t-0 rounded-b-md"
       @mouseout="selectedItem = null"
     >
       <slot name="autocomplete-header" />
