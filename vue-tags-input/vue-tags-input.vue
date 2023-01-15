@@ -7,9 +7,9 @@
   <div
     :class="[{ 'ti-disabled': disabled }, { 'ti-focus': focused }, $attrs.class]"
     :style="$attrs.style"
-    class="max-w-full"
+    class="max-w-full relative"
   >
-    <div class="flex flex-wrap relative border border-gray-200 p-1.5" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
+    <div class="flex flex-wrap border border-gray-200 p-1.5" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
       <ul v-if="tagsCopy" class="ti-tags">
         <li
           v-for="(tag, index) in tagsCopy"
@@ -151,7 +151,7 @@
     <slot name="between-elements" />
     <div
       v-if="autocompleteOpen"
-      class="border absolute z-10 left-0 right-0 max-h-24 overflow-y-scroll border-gray-200 border-t-0 rounded-b-md"
+      class="border absolute z-10 bg-white left-0 right-0 max-h-24 overflow-y-scroll border-gray-200 border-t-0 rounded-b-md"
       @mouseout="selectedItem = null"
     >
       <slot name="autocomplete-header" />
@@ -160,11 +160,13 @@
           v-for="(item, index) in filteredAutocompleteItems"
           :key="index"
           :style="item.style"
-          class="ti-item rounded-b-md text-gray-500"
+          class="ti-item text-gray-500"
           :class="[
             item.tiClasses,
             item.classes,
-            isSelected(index) ? tagColor:'',
+            index + 1 === filteredAutocompleteItems.length ? 'rounded-b-md' : '',
+            { 'ti-selected': index === selectedItem },
+            isSelected(index) ? tagColor + ' text-white':'',
           ]"
           @mouseover="disabled ? false : selectedItem = index"
         >
