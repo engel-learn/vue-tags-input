@@ -1,6 +1,6 @@
 {
   "name": "@engel-learn/vue3-tags-input",
-  "version": "3.0.16",
+  "version": "3.0.17",
   "author": "Johannes Munari <johannesm@hotmail.de>",
   "license": "MIT",
   "description": "A tags input component for Vue 3 with autocompletion, custom validation, templating and much more",

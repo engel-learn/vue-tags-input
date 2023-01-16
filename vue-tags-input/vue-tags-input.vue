@@ -160,13 +160,13 @@
           v-for="(item, index) in filteredAutocompleteItems"
           :key="index"
           :style="item.style"
-          class="ti-item text-gray-500"
+          class="ti-item"
           :class="[
             item.tiClasses,
             item.classes,
             index + 1 === filteredAutocompleteItems.length ? 'rounded-b-md' : '',
             { 'ti-selected': index === selectedItem },
-            isSelected(index) ? tagColor + ' text-white':'',
+            isSelected(index) ? tagColor + ' text-white':'text-gray-500',
           ]"
           @mouseover="disabled ? false : selectedItem = index"
         >
