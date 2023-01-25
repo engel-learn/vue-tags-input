@@ -123,14 +123,13 @@
         <li class="ti-new-tag-input-wrapper rounded-md w-32">
           <input
             ref="newTagInput"
-            v-if="disableInput"
-            class="ti-new-tag-input focus:ring-0 border-0 w-32"
+            class="ti-new-tag-input focus:ring-0 border-0 w-32 disabled:opacity-50"
             v-bind="$attrs"
             :class="[createClasses(newTag, tags, validation, isDuplicate)]"
             :placeholder="placeholder"
             :value="newTag"
             :maxlength="maxlength"
-            :disabled="disabled"
+            :disabled="disabled || disableInput"
             type="text"
             size="1"
             @keydown="performAddTags(
