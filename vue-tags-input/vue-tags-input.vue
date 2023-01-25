@@ -123,7 +123,7 @@
         <li class="ti-new-tag-input-wrapper rounded-md w-32">
           <input
             ref="newTagInput"
-            class="ti-new-tag-input focus:ring-0 border-0 w-32 disabled:opacity-50"
+            class="ti-new-tag-input focus:ring-0 border-0 w-32 disabled:opacity-60"
             v-bind="$attrs"
             :class="[createClasses(newTag, tags, validation, isDuplicate)]"
             :placeholder="placeholder"
