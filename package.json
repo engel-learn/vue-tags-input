@@ -1,6 +1,6 @@
 {
   "name": "@engel-learn/vue3-tags-input",
-  "version": "3.0.3",
+  "version": "3.0.18",
   "author": "Johannes Munari <johannesm@hotmail.de>",
   "license": "MIT",
   "description": "A tags input component for Vue 3 with autocompletion, custom validation, templating and much more",
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/sipec/vue-tags-input.git"
   },
-  "main": "main.js",
+  "main": "dist/vue-tags-input.js",
   "scripts": {
     "dev": "npm run docs",
     "docs": "cross-env NODE_ENV=development webpack-dev-server --hot --config ./build/docs.config.js",
@@ -43,6 +43,7 @@
     "vue": "3.x"
   },
   "dependencies": {
+    "isomorphic-style-loader": "^5.3.2",
     "sass": "^1.56.1",
     "vue": "3.x"
   },

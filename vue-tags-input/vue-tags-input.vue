@@ -9,7 +9,7 @@
     :style="$attrs.style"
     class="max-w-full"
   >
-    <div class="flex flex-wrap border border-gray-200 p-1.5" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
+    <div class="flex flex-wrap border border-gray-200 bg-white p-1.5" :class="[autocompleteOpen ? 'rounded-t-md':'rounded-md']">
       <ul v-if="tagsCopy" class="ti-tags">
         <li
           v-for="(tag, index) in tagsCopy"
